@@ -23,10 +23,6 @@
   
   NSString * serverVersion = [versionDic objectForKey:@"version"];
   
-  
-  NSDictionary * test = [[NSBundle mainBundle] infoDictionary];
-  
-  
   NSString * currentVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
   
   NSLog(@"current version : %@",currentVersion);
@@ -38,23 +34,27 @@
     
     NSString * urlString = [[NSString alloc] init];
     //        urlString = [NSString stringWithFormat:@"%@%@%@",@"https://autowayapps.hyundai.net/appstore/app/downloadApp.bin?osCode=iOS&file=updatetest_",serverVersion,@".ipa"];
-    urlString = [NSString stringWithFormat:@"%@",@"https://autowayapps.hyundai.net/appstore/app/downloadApp.bin?osCode=iOS&file=hmg_test_app.ipa"];
+//    urlString = [NSString stringWithFormat:@"%@",@"https://autowayapps.hyundai.net/appstore/app/downloadApp.bin?osCode=iOS&file=hmg_test_app.ipa"];
+    
+    urlString = [NSString stringWithFormat:@"%@",@"itms-services://?action=download-manifest&url=https%3A%2F%2Fautowaymobile.hmc.co.kr%2Fappstore.app%2Ffile%2Fdownload.bin%3Ffilename%3Dhmc_test_app.plist%26osCode%3DiOS"];
+    
     NSLog(@"url string : %@",urlString);
     
-    
-    if(IsAtLeastiOSVersion(@"10.0")){
-      [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString] options:@{} completionHandler:^(BOOL success) {
-        if(!success){
-          //불가능한 메시지 출력
-          NSLog(@"fail!!!!!!!");
-        }else{
-          NSLog(@"success!!!!!");
-        }
-      }];
-    }else{
-      [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
-      //몇초동안 반응없으면 앱설치 안된다고 감지해야함
-    }
+    dispatch_async(dispatch_get_main_queue(), ^{
+      if(IsAtLeastiOSVersion(@"10.0")){
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString] options:@{} completionHandler:^(BOOL success) {
+          if(!success){
+            //불가능한 메시지 출력
+            NSLog(@"fail!!!!!!!");
+          }else{
+            NSLog(@"success!!!!!");
+          }
+        }];
+      }else{
+        [[UIApplication sharedApplication] openURL:[NSURL URLWithString:urlString]];
+        //몇초동안 반응없으면 앱설치 안된다고 감지해야함
+      }
+    });
   }
 }
 

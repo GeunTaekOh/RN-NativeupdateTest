@@ -5,7 +5,6 @@ const { UpdateModule } = NativeModules;
 
 const UpdateModuleButton = () => {
   const onPress = () => {
-    //CalendarModule.createCalendarEvent('testName', 'testLocation');
     UpdateModule.nativeUpdateLogic();
   };
 
