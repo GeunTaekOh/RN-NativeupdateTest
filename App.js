@@ -7,6 +7,7 @@
  */
 
 import React from 'react';
+import UpdateModuleButton from './UpdateModuleButton'
 import type {Node} from 'react';
 import {
   SafeAreaView,
@@ -74,6 +75,9 @@ const App: () => Node = () => {
           </Section>
           <Section title="React Native">
           Calling the update logic of the native region
+          </Section>
+          <Section title="Update Button">
+            <UpdateModuleButton></UpdateModuleButton>
           </Section>
         </View>
       </ScrollView>
