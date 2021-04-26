@@ -140,9 +140,4 @@
   return currentVersion;
 }
 
-//+ (void) canNotUpdateCallback:(RCTResponseSenderBlock) callback{
-//  NSString * value = [NSString stringWithFormat:@"%@",@"hi"];
-//  callback(@[[NSNull null], value]);
-//}
-
 @end
