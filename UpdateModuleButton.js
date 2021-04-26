@@ -11,7 +11,7 @@ const UpdateModuleButton = () => {
       [                              // 버튼 배열
         {
           text: "취소",                              // 버튼 제목
-          onPress: () => console.log("click no"),     //onPress 이벤트시 콘솔창에 로그를 찍는다
+          onPress: () => console.log ("click no"),     //onPress 이벤트시 콘솔창에 로그를 찍는다
           style: "cancel"
         },
         { text: "설치", onPress: () => UpdateModule.nativeUpdateLogic() }, //버튼 제목

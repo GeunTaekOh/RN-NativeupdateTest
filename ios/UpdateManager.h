@@ -15,6 +15,9 @@
 
 + (void)nativeUpdateLogic;
 + (NSDictionary *) getDataFrom:(NSString *)baseUrl;
++ (NSArray *)strVersionToArray:(NSString *) strVersion;
++ (BOOL) isUpdate:(NSArray *)curVersion serverVersion : (NSArray*)serverVersion;
++ (NSString *) getiOSNativeVersion;
 
 @end
 

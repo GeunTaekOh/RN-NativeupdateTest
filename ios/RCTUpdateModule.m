@@ -24,6 +24,10 @@ RCT_EXPORT_METHOD(nativeUpdateLogic)
   NSLog(@"React Native Call nativeUpdateLogic");
 }
 
+RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(getiOSNativeVersion){
+  return [UpdateManager getiOSNativeVersion];
+}
+
 RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(getName)
 {
   return [[UIDevice currentDevice] name];
