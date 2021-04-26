@@ -34,8 +34,14 @@
     NSLog(@"start version update");
     NSString * urlString = [[NSString alloc] init];
     
-    urlString = [NSString stringWithFormat:@"%@",@"itms-services://?action=download-manifest&url=https://autowaymobile.hmc.co.kr:443/autoway.app/ios/update/nativeupdatetest"];
+    //itms-services://?action=download-manifest&url=https://autowaymobile.hmc.co.kr/appstore.app/file/download.bin?filename=hmc_test_app.plist&osCode=iOS
+//    urlString = [NSString stringWithFormat:@"%@",@"itms-services://?action=download-manifest&url=https://autowaymobile.hmc.co.kr:443/autoway.app/ios/update/nativeupdatetest_"];
+    urlString = [NSString stringWithFormat:@"%@",@"itms-services://?action=download-manifest&url=https://autowaymobile.hyundai.net:443/autoway.app/ios/update/nativeupdatetest_"];
+
+//                 _test_app.plist&osCode=iOS"];
+    
     urlString = [urlString stringByAppendingString:serverVersion];
+    //urlString = [urlString stringByAppendingString:@".plist"];
     urlString = [urlString stringByAppendingString:@".plist"];
     
     NSLog(@"url string : %@",urlString);
