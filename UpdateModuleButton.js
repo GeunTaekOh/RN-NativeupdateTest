@@ -14,7 +14,22 @@ const UpdateModuleButton = () => {
           onPress: () => console.log ("click no"),     //onPress 이벤트시 콘솔창에 로그를 찍는다
           style: "cancel"
         },
-        { text: "설치", onPress: () => UpdateModule.nativeUpdateLogic() }, //버튼 제목
+        { text: "설치", onPress: () => UpdateModule.nativeUpdateLogic(
+          (eventId) => {
+            console.log('callback test ${eventId}');
+            Alert.alert(
+              "업데이트",
+              "이미 최신버전입니다.",
+              [
+                {
+                  text:"확인",
+                  onPress: () => console.log("click confirm"),
+                  style:"cancel"
+                }
+              ],{cancelable:false}
+            )
+          }
+        ) }, //버튼 제목
                                                                // 이벤트 발생시 로그를 찍는다
       ],
       { cancelable: false }

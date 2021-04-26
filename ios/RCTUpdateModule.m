@@ -16,11 +16,9 @@
 RCT_EXPORT_MODULE();
 
 
-RCT_EXPORT_METHOD(nativeUpdateLogic)
+RCT_EXPORT_METHOD(nativeUpdateLogic:(RCTResponseSenderBlock)callback)
 {
-  [UpdateManager nativeUpdateLogic];
-  
-  
+  [UpdateManager nativeUpdateLogic:callback];
   NSLog(@"React Native Call nativeUpdateLogic");
 }
 

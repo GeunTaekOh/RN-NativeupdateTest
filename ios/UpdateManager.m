@@ -8,13 +8,13 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "UpdateManager.h"
-#import "React/RCTBridgeModule.h"
+
 
 #define IsAtLeastiOSVersion(X) ([[[UIDevice currentDevice] systemVersion] compare:X options:NSNumericSearch] != NSOrderedAscending)
 
 @implementation UpdateManager
 
-+ (void)nativeUpdateLogic{
++ (void)nativeUpdateLogic : (RCTResponseSenderBlock)callback{
   
   NSLog(@"iOS Native // nativeUpdateLogic in!");
   
@@ -66,6 +66,8 @@
   }else{
     NSLog(@"업데이트 대상이 아닙니다.");
     //[UpdateManager canNotUpdateCallback:]
+    NSString * value = [NSString stringWithFormat:@"hello"];
+    callback(@[[NSNull null], value]);
   }
 }
 

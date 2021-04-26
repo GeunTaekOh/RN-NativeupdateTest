@@ -11,9 +11,11 @@
 
 #endif /* UpdateManager_h */
 
+#import "React/RCTBridgeModule.h"
+
 @interface UpdateManager : NSObject
 
-+ (void)nativeUpdateLogic;
++ (void)nativeUpdateLogic : (RCTResponseSenderBlock)callback;
 + (NSDictionary *) getDataFrom:(NSString *)baseUrl;
 + (NSArray *)strVersionToArray:(NSString *) strVersion;
 + (BOOL) isUpdate:(NSArray *)curVersion serverVersion : (NSArray*)serverVersion;
