@@ -33,4 +33,11 @@ RCT_EXPORT_BLOCKING_SYNCHRONOUS_METHOD(getName)
   return [[UIDevice currentDevice] name];
 }
 
+//RCT_EXPORT_METHOD(canNotUpdateCallback:(RCTResponseSenderBlock)callback)
+//{
+//  NSString * value = [NSString stringWithFormat:@"%@",@"hello"];
+//  callback(@[[NSNull null], value]);
+//}
+//
+
 @end

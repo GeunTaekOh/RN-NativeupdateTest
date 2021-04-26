@@ -24,7 +24,7 @@ const UpdateModuleButton = () => {
 
   return (
     <Button
-      title="Click to invoke your native module!"
+      title="Click to update native version!"
       color="#841584"
       onPress={onPress}
     />

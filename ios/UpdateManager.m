@@ -8,6 +8,7 @@
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
 #import "UpdateManager.h"
+#import "React/RCTBridgeModule.h"
 
 #define IsAtLeastiOSVersion(X) ([[[UIDevice currentDevice] systemVersion] compare:X options:NSNumericSearch] != NSOrderedAscending)
 
@@ -26,7 +27,7 @@
   NSLog(@"server version : %@",serverVersion);
   
   NSArray * curAppVersion = [UpdateManager strVersionToArray:currentVersion];
-  NSArray * serverAppVersion = [UpdateManager strVersionToArray:currentVersion];
+  NSArray * serverAppVersion = [UpdateManager strVersionToArray:serverVersion];
   
   BOOL isUpdate = [UpdateManager isUpdate:curAppVersion serverVersion:serverAppVersion];
   
@@ -64,6 +65,7 @@
     
   }else{
     NSLog(@"업데이트 대상이 아닙니다.");
+    //[UpdateManager canNotUpdateCallback:]
   }
 }
 
@@ -112,9 +114,20 @@
 }
 
 + (BOOL) isUpdate:(NSArray *)curVersion serverVersion : (NSArray*)serverVersion{
+  NSLog(@"taek // curVersion : %@",curVersion);
+  NSLog(@"taek // curVersion[2] : %@",curVersion[2]);
+  NSLog(@"taek // curVersion[1] : %@",curVersion[1]);
+  NSLog(@"taek // curVersion[0] : %@",curVersion[0]);
+  NSLog(@"taek // serverVersion : %@",serverVersion);
+  NSLog(@"taek // serverVersion[2] : %@",serverVersion[2]);
+  NSLog(@"taek // serverVersion[1] : %@",serverVersion[1]);
+  NSLog(@"taek // serverVersion[0] : %@",serverVersion[0]);
+  
+  
   
   BOOL isUpdate = NO;
-  if(serverVersion[2] > curVersion[2] || serverVersion[1] > curVersion[1] || serverVersion[0] > curVersion[0]){
+  if([serverVersion[2] intValue] > [curVersion[2] intValue] || [serverVersion[1] intValue] > [curVersion[1] intValue] || [serverVersion[0] intValue] > [curVersion[0] intValue]){
+    NSLog(@"taek // isUpdate in");
     isUpdate = YES;
   }
   return isUpdate;
@@ -124,5 +137,10 @@
   NSString * currentVersion = [[[NSBundle mainBundle] infoDictionary] objectForKey:@"CFBundleShortVersionString"];
   return currentVersion;
 }
+
+//+ (void) canNotUpdateCallback:(RCTResponseSenderBlock) callback{
+//  NSString * value = [NSString stringWithFormat:@"%@",@"hi"];
+//  callback(@[[NSNull null], value]);
+//}
 
 @end
