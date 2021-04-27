@@ -8,8 +8,9 @@
 
 import React from 'react';
 import UpdateModuleButton from './UpdateModuleButton'
-import { NativeModules, Button, Alert } from 'react-native';
+import { NativeModules, Button, Alert, Platform } from 'react-native';
 const { UpdateModule } = NativeModules;
+
 import type {Node} from 'react';
 import {
   SafeAreaView,
@@ -79,7 +80,7 @@ const App: () => Node = () => {
           Calling the update logic of the native region
           </Section>
           <Section title="Native Version">
-            {UpdateModule.getiOSNativeVersion()}
+            {Platform.OS === 'ios' ? UpdateModule.getiOSNativeVersion() : 'Android Version'}
           </Section>
           <Section title="Update Button">
             <UpdateModuleButton></UpdateModuleButton>
